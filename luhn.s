@@ -2,15 +2,40 @@
 .global _start
 _start:
     ldr r0, =example_numbers
+    bl test_number
+
+    add r1, r0, #1
+    bl length
+    add r0, r1, r0
+    bl test_number
+    
+    add r1, r0, #1
+    bl length
+    add r0, r1, r0
+    bl test_number
+    
+    add r1, r0, #1
+    bl length
+    add r0, r1, r0
+    bl test_number
+
+    mov r0, #0
+    mov r7, #1
+    swi 0
+
+test_number:
+    push {r0, lr}
+    bl print_string
+
     bl luhn_test
     cmp r0, #1
     ldreq r0, =valid_message
     ldrne r0, =invalid_message
     bl print_string
+    pop {r0, lr}
+    mov pc, lr
 
-    mov r0, #0
-    mov r7, #1
-    swi 0
+
 
 print_string:
     push {r0-r7, lr}
@@ -135,9 +160,9 @@ isNumerical:
 
 .data
 valid_message:
-    .asciz "valid card number\n"
+    .asciz " valid card number\n"
 invalid_message:
-    .asciz "invalid card number\n"
+    .asciz " invalid card number\n"
 
 reversed_string:
     .space 32
