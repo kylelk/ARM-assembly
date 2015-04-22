@@ -1,6 +1,6 @@
 .text
-.global main
-main:
+.global _start
+_start:
     ldr r0, =example_numbers
     bl luhn_test
     cmp r0, #1
@@ -14,12 +14,12 @@ main:
 
 print_string:
     push {r0-r7, lr}
-    mov r1, r0
+    mov r1, r0   @ string to print
     bl length
-    mov r2, r0
-    mov r0, #1
-    mov r7, #4
-    swi 0
+    mov r2, r0   @ length of string
+    mov r0, #1   @ write to stdout
+    mov r7, #4   @ SYS_WRITE
+    swi 0        @ call system interupt
     pop {r0-r7, lr}
     mov pc, lr
 
@@ -138,9 +138,6 @@ valid_message:
     .asciz "valid card number\n"
 invalid_message:
     .asciz "invalid card number\n"
-
-decimalFormat:
-    .asciz "%d\n"
 
 reversed_string:
     .space 32
