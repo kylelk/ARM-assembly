@@ -1,5 +1,6 @@
 @ can be compiled using:  gcc -nostdlib hello.s -o hello
 @ can also be compiled using:  as hello.s -o hello.o ; ld hello.o -o hello
+.text
 .global _start
 _start:
     mov r0, #1

@@ -1,3 +1,4 @@
+.text
 .global main
 
 print_num:

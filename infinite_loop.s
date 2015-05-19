@@ -1,5 +1,5 @@
+.text
 .global main
-
 main:
 
 loop:

@@ -1,3 +1,4 @@
+.text
 .global main
 main:
     mov r0, #10
@@ -33,6 +34,7 @@ row:
     add r1, r1, #1
     b row
 
+.data
 numFormat:
     .asciz "%d "
 
