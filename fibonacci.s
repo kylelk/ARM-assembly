@@ -1,15 +1,10 @@
+.text
 .global main
-printNum:
-    .asciz "%d\n"
-    .align 4
-
-limit:
-    .word 4000000
-
 main:
     mov r0, #0
     mov r1, #1
-    ldr r3, limit
+    ldr r3, =limit
+    ldr r3, [r3]
     bl loop
 
     mov r7, #1
@@ -35,4 +30,11 @@ end_loop:
 
     mov r7, #1
     swi 0
+
+.data
+limit:
+    .word 4000000
+
+printNum:
+    .asciz "%d\n"
 
