@@ -2,7 +2,7 @@
 .global main
 main:
     mov r7, #20   @ sys_getpid
-    swi 0
+    swi 0         @ call system interupt 
     mov r1, r0
     ldr r0, =decimalFormat
     bl printf

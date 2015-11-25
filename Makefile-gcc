@@ -1,0 +1,9 @@
+FILENAME=$(shell basename $(shell pwd))
+all:
+	gcc $(FILENAME).s -o $(FILENAME)
+	objcopy -O binary $(FILENAME) $(FILENAME).bin
+
+clean:
+	rm $(FILENAME).o
+	rm $(FILENAME).bin
+	rm $(FILENAME)

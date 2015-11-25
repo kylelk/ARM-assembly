@@ -1,0 +1,4 @@
+TODO: create elf executable from flat binary file
+TODO: draw a pixel to the screen
+TODO: get the current time
+
